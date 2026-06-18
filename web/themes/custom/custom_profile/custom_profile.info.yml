@@ -1,0 +1,7 @@
+name: Custom Profile
+type: theme
+description: "Custom sub-theme for profile page styling."
+core_version_requirement: ^10 || ^11
+base theme: apigee_kickstart
+libraries:
+  - custom_profile/global-styling

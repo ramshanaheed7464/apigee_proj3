@@ -1,0 +1,366 @@
+/**
+ * Custom Profile Page Styles
+ * Transforms the default Drupal user profile page into a styled card layout
+ * matching the target design with a teal gradient left panel and summary right panel.
+ *
+ * HOW TO USE:
+ * Option A (Recommended): Go to Appearance > Settings > your active theme >
+ *   paste this into the "Custom CSS" textarea, then Save.
+ * Option B: Add to your theme's CSS file (e.g. css/style.css or css/custom.css).
+ * Option C: Use the Admin Toolbar > Appearance > Custom CSS module if installed.
+ */
+
+/* =============================================
+   PROFILE PAGE WRAPPER
+   ============================================= */
+
+.path--user .layout-container,
+.page-user .layout-container {
+    background: #f4f6f8;
+}
+
+/* Hide the default tab navigation (Profile home / Edit profile / Shortcuts)
+   and the "Profile Details" heading — the new card replaces them */
+.path--user .tabs--primary,
+.page-user .tabs--primary,
+.path--user .block-local-tasks-block,
+.page-user .block-local-tasks-block {
+    display: none;
+}
+
+/* =============================================
+   PROFILE CARD CONTAINER
+   ============================================= */
+
+.path--user .region-content,
+.page-user .region-content {
+    max-width: 860px;
+    margin: 2.5rem auto;
+    padding: 0 1rem;
+}
+
+/* The main profile block */
+.path--user .block-user,
+.page-user .block-user {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    min-height: 240px;
+}
+
+/* =============================================
+   LEFT PANEL — TEAL GRADIENT
+   ============================================= */
+
+/* We inject the left panel using the user picture / avatar area */
+.path--user .field--name-user-picture,
+.page-user .field--name-user-picture,
+.path--user .user-picture,
+.page-user .user-picture {
+    background: linear-gradient(160deg, #1a6e7e 0%, #0d9488 50%, #14b8a6 100%);
+    width: 280px;
+    min-width: 280px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2.5rem 1.5rem;
+    color: #ffffff;
+}
+
+/* If there's no dedicated picture field, we target the profile view's left section */
+.path--user .views-element-container .profile,
+.page-user .views-element-container .profile {
+    background: linear-gradient(160deg, #1a6e7e 0%, #0d9488 50%, #14b8a6 100%);
+    width: 280px;
+    min-width: 280px;
+    padding: 2.5rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+}
+
+/* =============================================
+   AVATAR / PROFILE IMAGE
+   ============================================= */
+
+/* Style the user avatar image */
+.path--user .field--name-user-picture img,
+.page-user .field--name-user-picture img,
+.path--user .user-picture img,
+.page-user .user-picture img {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid rgba(255, 255, 255, 0.6);
+    display: block;
+    margin: 0 auto 1.25rem;
+}
+
+/* Default avatar placeholder (when no image is set) */
+.path--user .field--name-user-picture:not(:has(img))::before,
+.page-user .field--name-user-picture:not(:has(img))::before {
+    content: '';
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.25);
+    border: 4px solid rgba(255, 255, 255, 0.5);
+    display: block;
+    margin: 0 auto 1.25rem;
+}
+
+/* =============================================
+   USER NAME & ROLE (left panel)
+   ============================================= */
+
+/* The page title (username / display name) */
+.path--user h1.page-title,
+.page-user h1.page-title {
+    display: none;
+    /* We'll show name inside the card */
+}
+
+/* Target the name displayed inside the user profile view */
+.path--user .field--name-field-display-name,
+.path--user .field--name-name,
+.page-user .field--name-field-display-name,
+.page-user .field--name-name,
+.path--user .username,
+.page-user .username {
+    color: #ffffff;
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 0.4rem;
+    line-height: 1.3;
+}
+
+/* Roles display */
+.path--user .field--name-roles,
+.page-user .field--name-roles {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.875rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+/* =============================================
+   EDIT PROFILE BUTTON (left panel)
+   ============================================= */
+
+/* Edit profile link/button in the left panel */
+.path--user .field--name-user-picture a,
+.page-user .field--name-user-picture a,
+.path--user a[href*="/edit"]:not(.menu-item a),
+.page-user a[href*="/edit"]:not(.menu-item a) {
+    display: inline-block;
+    background: transparent;
+    color: #ffffff;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    padding: 0.5rem 1.75rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    margin-top: 1rem;
+    transition: background 0.2s, color 0.2s;
+    cursor: pointer;
+}
+
+.path--user a[href*="/edit"]:not(.menu-item a):hover,
+.page-user a[href*="/edit"]:not(.menu-item a):hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* =============================================
+   RIGHT PANEL — PROFILE SUMMARY
+   ============================================= */
+
+/* The right-side content area */
+.path--user .view-user-profile,
+.path--user .profile-summary,
+.path--user .user-profile,
+.page-user .view-user-profile,
+.page-user .profile-summary,
+.page-user .user-profile {
+    flex: 1;
+    padding: 2rem 2.25rem;
+    background: #f8f9fa;
+}
+
+/* Fallback: if the layout uses a generic content container */
+.path--user .block-user>.content,
+.page-user .block-user>.content {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+/* Profile Summary heading */
+.path--user .block-user h2,
+.page-user .block-user h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1a202c;
+    margin: 0 0 1.25rem;
+    padding-bottom: 0;
+}
+
+/* =============================================
+   FIELD ROWS — Email, Username
+   ============================================= */
+
+.path--user .field--name-mail,
+.path--user .field--name-name,
+.page-user .field--name-mail,
+.page-user .field--name-name {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+    font-size: 0.95rem;
+    color: #2d3748;
+}
+
+.path--user .field--name-mail .field__label,
+.path--user .field--name-name .field__label,
+.page-user .field--name-mail .field__label,
+.page-user .field--name-name .field__label {
+    font-weight: 700;
+    color: #1a202c;
+    min-width: 90px;
+    flex-shrink: 0;
+}
+
+.path--user .field--name-mail .field__item,
+.path--user .field--name-name .field__item,
+.page-user .field--name-mail .field__item,
+.page-user .field--name-name .field__item {
+    color: #4a5568;
+}
+
+/* =============================================
+   MEMBER SINCE & TIMEZONE — icon rows
+   ============================================= */
+
+.path--user .field--name-created,
+.path--user .field--name-timezone,
+.page-user .field--name-created,
+.page-user .field--name-timezone {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 1.25rem;
+    font-size: 0.9rem;
+    color: #4a5568;
+}
+
+/* Icon pseudo-elements before Member Since and Timezone */
+.path--user .field--name-created::before,
+.page-user .field--name-created::before {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-color: #718096;
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='currentColor'%3E%3Crect x='3' y='4' width='18' height='18' rx='2' stroke-width='2'/%3E%3Cline x1='16' y1='2' x2='16' y2='6' stroke-width='2'/%3E%3Cline x1='8' y1='2' x2='8' y2='6' stroke-width='2'/%3E%3Cline x1='3' y1='10' x2='21' y2='10' stroke-width='2'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='currentColor'%3E%3Crect x='3' y='4' width='18' height='18' rx='2' stroke-width='2'/%3E%3Cline x1='16' y1='2' x2='16' y2='6' stroke-width='2'/%3E%3Cline x1='8' y1='2' x2='8' y2='6' stroke-width='2'/%3E%3Cline x1='3' y1='10' x2='21' y2='10' stroke-width='2'/%3E%3C/svg%3E");
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    flex-shrink: 0;
+}
+
+.path--user .field--name-timezone::before,
+.page-user .field--name-timezone::before {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-color: #718096;
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='currentColor'%3E%3Ccircle cx='12' cy='12' r='9' stroke-width='2'/%3E%3Cpolyline points='12 7 12 12 15 15' stroke-width='2'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='currentColor'%3E%3Ccircle cx='12' cy='12' r='9' stroke-width='2'/%3E%3Cpolyline points='12 7 12 12 15 15' stroke-width='2'/%3E%3C/svg%3E");
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    flex-shrink: 0;
+}
+
+.path--user .field--name-created .field__label,
+.path--user .field--name-timezone .field__label,
+.page-user .field--name-created .field__label,
+.page-user .field--name-timezone .field__label {
+    font-size: 0.75rem;
+    color: #718096;
+    font-weight: 400;
+    display: block;
+    line-height: 1.2;
+}
+
+.path--user .field--name-created .field__item,
+.path--user .field--name-timezone .field__item,
+.page-user .field--name-created .field__item,
+.page-user .field--name-timezone .field__item {
+    font-size: 1rem;
+    color: #2d3748;
+    font-weight: 500;
+    display: block;
+    line-height: 1.4;
+}
+
+/* Stack label above value */
+.path--user .field--name-created .field__items,
+.path--user .field--name-timezone .field__items,
+.page-user .field--name-created .field__items,
+.page-user .field--name-timezone .field__items {
+    display: flex;
+    flex-direction: column;
+}
+
+/* =============================================
+   HIDE UNWANTED ELEMENTS
+   ============================================= */
+
+/* Hide the generic "Name:", "Username:", "Email:" labels shown in the default layout
+   as we're using a cleaner field-by-field approach above */
+.path--user .field__label[for="edit-name"],
+.page-user .field__label[for="edit-name"] {
+    display: none;
+}
+
+/* =============================================
+   RESPONSIVE — Stack on mobile
+   ============================================= */
+
+@media (max-width: 640px) {
+
+    .path--user .block-user,
+    .page-user .block-user {
+        flex-direction: column;
+    }
+
+    .path--user .field--name-user-picture,
+    .page-user .field--name-user-picture,
+    .path--user .user-picture,
+    .page-user .user-picture {
+        width: 100%;
+        min-width: unset;
+        padding: 2rem 1rem;
+    }
+
+    .path--user .view-user-profile,
+    .path--user .user-profile,
+    .page-user .view-user-profile,
+    .page-user .user-profile {
+        padding: 1.5rem;
+    }
+}

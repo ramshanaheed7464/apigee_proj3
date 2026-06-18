@@ -1,0 +1,10 @@
+langcode: en
+entity_label_singular: ''
+entity_label_plural: ''
+cache_expiration: 900
+cache_insert_chunk_size: 100
+credential_lifetime: 0
+locked_base_fields:
+  - displayName
+required_base_fields:
+  - displayName

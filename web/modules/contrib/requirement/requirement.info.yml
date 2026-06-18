@@ -1,0 +1,11 @@
+name: Requirement
+description: Allows other modules a way to declare configuration requirements and suggestions, and provide solutions to fix them.
+type: module
+package: Administration
+
+core_version_requirement: ^8 || ^9 || ^10 || ^11
+
+# Information added by Drupal.org packaging script on 2025-02-25
+version: '8.x-1.3'
+project: 'requirement'
+datestamp: 1740468378
